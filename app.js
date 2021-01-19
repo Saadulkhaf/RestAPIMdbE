@@ -3,8 +3,10 @@ const express = require("express");
 const app = express();
 const postsRoute = require("./routes/posts");
 const bodyParser = require("body-parser");
+const authRoute = require("./routes/auth");
 
 app.use(bodyParser.json());
+app.use("/api/user", authRoute);
 app.use("/posts", postsRoute);
 
 app.get("/", (req, res) => {
